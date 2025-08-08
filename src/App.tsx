@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import ProductCards from "./components/ProductCards";
 import Footer from "./components/footer";
 import SEO from "./components/SEO";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   useEffect(() => {
