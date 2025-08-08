@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ProductCards from "./components/ProductCards";
 import Footer from "./components/footer";
 import SEO from "./components/SEO";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   useEffect(() => {
@@ -14,6 +15,7 @@ function App() {
   
   return (
     <>
+      <Analytics/>
       <SEO/>
       <Hero />
       <ProductCards/>
