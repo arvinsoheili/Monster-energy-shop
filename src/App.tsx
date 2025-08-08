@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import { useEffect } from "react";
 import ProductCards from "./components/ProductCards";
 import Footer from "./components/footer";
+import SEO from "./components/SEO";
 
 function App() {
   useEffect(() => {
@@ -13,6 +14,7 @@ function App() {
   
   return (
     <>
+      <SEO/>
       <Hero />
       <ProductCards/>
       <Footer copywrite="Copywrite Develook"/>
