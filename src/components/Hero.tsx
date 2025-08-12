@@ -28,10 +28,13 @@ function Hero() {
 					variants={gridContainerVariants}
 					initial='hidden'
 					animate='show'
-					className=""
+					className=''
 				>
-					<MotionAvatar variants={gridSquareVariants} className="">
-						<AvatarImage src={HeroData.image} className="md:rotate-30 md:w-[80%]"/>
+					<MotionAvatar variants={gridSquareVariants} className=''>
+						<AvatarImage
+							src={HeroData.image}
+							className='md:rotate-30 md:w-[80%]'
+						/>
 					</MotionAvatar>
 				</motion.section>
 				<div className='flex flex-col justify-center gap-3 md:justify-center md:flex md:flex-col md:gap-8 px-10 lg:pr-20'>
@@ -53,17 +56,20 @@ function Hero() {
 							backgroundColor: "#0a0a0a",
 							strokeOpacity: 0,
 							stroke: "#0a0a0a",
-							boxShadow: "0 0 10px 5px#0a0a0a",
 							color: "#0a0a0a",
+							transition: { duration: 0.8 },
 						}}
 						animate={{
 							opacity: 1,
 							backgroundColor: "#a3e635",
 							strokeOpacity: 1,
 							stroke: "#a3e635",
-							boxShadow: "0 0 10px 5px #a3e635",
+							transition: { delay: 0.8, duration: 1.5 },
 						}}
-						transition={{ delay: 0.8, duration: 1.5 }}
+						whileHover={{
+							boxShadow: "0 0 10px 5px #a3e635",
+							transition: { delay: 0, duration: 0.9, ease: "easeIn" },
+						}}
 					>
 						{HeroData.button}
 					</MotionButton>
