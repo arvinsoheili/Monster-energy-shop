@@ -26,7 +26,7 @@ export default function ProductCards() {
 	const MotionCard = motion(Card);
 	const profileCards = Profiles.profiles.map((profile) => {
 		return (
-			<MotionCard variants={gridSquareVariants} className='w-full mx-auto'>
+			<MotionCard variants={gridSquareVariants} className='w-full mx-auto dark:shadow-lg dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-600'>
 				<CardHeader className='flex justify-center items-center'>
 					<Avatar className='w-full'>
 						<AvatarImage
@@ -40,7 +40,7 @@ export default function ProductCards() {
 				</CardHeader>
 				<CardContent className='gap-3 justify-center text-center h-full'>
 					<div className='gap-0.5'>
-						<h2 className='text-3xl font-medium break-words'>{`${profile.name}`}</h2>
+						<h2 className='text-3xl max-xs:text-2xl font-medium break-words'>{`${profile.name}`}</h2>
 						<h4 className='text-stone-500'>{`${profile.volume}${profile.volUnit}`}</h4>
 					</div>
 				</CardContent>
