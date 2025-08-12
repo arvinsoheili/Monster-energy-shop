@@ -22,6 +22,7 @@ export default function ProductCards() {
 		show: { opacity: 1, y: 0 },
 	};
 
+	const MotionButton = motion(Button);
 	const MotionCard = motion(Card);
 	const profileCards = Profiles.profiles.map((profile) => {
 		return (
@@ -51,7 +52,7 @@ export default function ProductCards() {
 					</ul>
 				</div>
 				<CardFooter className='flex flex-row gap-5 text-end justify-center items-end'>
-					<Button className='bg-lime-500 w-full'>Buy Now</Button>
+					<MotionButton whileHover={{ boxShadow: "0 0 10px 5px #a3e635", backgroundColor: "#a3e635" }} className='bg-lime-500 w-full'>Buy Now</MotionButton>
 				</CardFooter>
 			</MotionCard>
 		);
