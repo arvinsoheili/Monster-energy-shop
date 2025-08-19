@@ -8,6 +8,16 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Profiles from "../data/Profiles.json";
 import { Button } from "@/components/ui/button";
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from "./ui/drawer";
 export default function ProductCards() {
 	const gridContainerVariants = {
 		hidden: { opacity: 0 },
@@ -26,7 +36,10 @@ export default function ProductCards() {
 	const MotionCard = motion(Card);
 	const profileCards = Profiles.profiles.map((profile) => {
 		return (
-			<MotionCard variants={gridSquareVariants} className='w-full mx-auto dark:shadow-lg dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-600'>
+			<MotionCard
+				variants={gridSquareVariants}
+				className='w-full mx-auto dark:shadow-lg dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-600'
+			>
 				<CardHeader className='flex justify-center items-center'>
 					<Avatar className='w-full'>
 						<AvatarImage
@@ -52,7 +65,53 @@ export default function ProductCards() {
 					</ul>
 				</div>
 				<CardFooter className='flex flex-row gap-5 text-end justify-center items-end'>
-					<MotionButton whileHover={{ boxShadow: "0 0 10px 5px #a3e635", backgroundColor: "#a3e635" }} className='bg-lime-500 w-full xl:text-xl py-6'>Buy Now</MotionButton>
+					<Drawer>
+						<DrawerTrigger asChild>
+							<MotionButton
+								whileHover={{
+									boxShadow: "0 0 10px 5px #a3e635",
+									backgroundColor: "#a3e635",
+								}}
+								className='w-full xl:text-xl py-6'
+							>
+								Buy Now
+							</MotionButton>
+						</DrawerTrigger>
+
+						<DrawerContent className=''>
+							<div className='mx-auto w-full max-w-sm'>
+								<DrawerHeader>
+									<DrawerTitle className='text-2xl'>{profile.name}</DrawerTitle>
+									<DrawerDescription>
+										{profile.volume}
+										{profile.volUnit}
+									</DrawerDescription>
+								</DrawerHeader>
+								<div className='p-4 pb-0 grid grid-cols-2'>
+									<Avatar className='flex justify-center '>
+										<AvatarImage
+											src={`images/products/${profile.image}`}
+											className='max-h-70 object-fit'
+										/>
+									<div className="border-r-2 px-2.5"/>
+									</Avatar>
+									<div className='flex justify-start text-start my-3 items-start h-full text-sm'>
+										<ul>
+											{profile.contains.map((skill) => {
+												return <li className='mx-0.5'>+ {skill}</li>;
+											})}
+										</ul>
+									</div>
+								</div>
+								<DrawerFooter>
+									<Button disabled>Add To Cart</Button>
+									<DrawerClose asChild>
+										<Button variant='outline'>Cancel</Button>
+									</DrawerClose>
+								</DrawerFooter>
+							</div>
+						</DrawerContent>
+					</Drawer>
 				</CardFooter>
 			</MotionCard>
 		);
