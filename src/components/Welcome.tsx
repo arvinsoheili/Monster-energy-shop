@@ -74,7 +74,7 @@ function Welcome() {
 							transition: {
 								opacity: { delay: 0.8, duration: 1.5 },
 								backgroundColor: { delay: 0.8, duration: 1.5 },
-								boxShadow: { delay: 1.2, duration: 1, ease: "easeInOut" }, // separate transition
+								boxShadow: { delay: 1, duration: 0.5, ease: "easeOut" }, // separate transition
 							},
 						}}
 						whileHover={{
