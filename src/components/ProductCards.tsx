@@ -78,7 +78,7 @@ export default function ProductCards() {
 							</MotionButton>
 						</DrawerTrigger>
 
-						<DrawerContent className="">
+						<DrawerContent className=''>
 							<div className='mx-auto w-full max-w-sm'>
 								<DrawerHeader>
 									<DrawerTitle className='text-2xl'>{profile.name}</DrawerTitle>
@@ -87,13 +87,24 @@ export default function ProductCards() {
 										{profile.volUnit}
 									</DrawerDescription>
 								</DrawerHeader>
-								<div className='p-4 pb-0 '>
-									<Avatar className="flex justify-center ">
-										<AvatarImage src={`images/products/${profile.image}`} className="max-h-70 object-fit"/>
+								<div className='p-4 pb-0 grid grid-cols-2'>
+									<Avatar className='flex justify-center '>
+										<AvatarImage
+											src={`images/products/${profile.image}`}
+											className='max-h-70 object-fit'
+										/>
+									<div className="border-r-2 px-2.5"/>
 									</Avatar>
+									<div className='flex justify-start text-start my-3 items-start h-full text-sm'>
+										<ul>
+											{profile.contains.map((skill) => {
+												return <li className='mx-0.5'>+ {skill}</li>;
+											})}
+										</ul>
+									</div>
 								</div>
 								<DrawerFooter>
-									<Button>Add To Cart</Button>
+									<Button disabled>Add To Cart</Button>
 									<DrawerClose asChild>
 										<Button variant='outline'>Cancel</Button>
 									</DrawerClose>
