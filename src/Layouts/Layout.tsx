@@ -11,7 +11,7 @@ export default function Layout() {
 	return (
 		<>
 			{!shouldHideLayout && <Header />}
-			<main>
+			<main className={`${!shouldHideLayout && `md:mt-30`}`}>
 				<Outlet />
 			</main>
 			{!shouldHideLayout && <Footer copywrite="Developed By Develook"/>}
