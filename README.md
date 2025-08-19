@@ -24,5 +24,3 @@ Built with **React + TypeScript + TailwindCSS + Framer Motion + shadcn/ui**, thi
 - **Animations:** Framer Motion  
 - **Routing:** React Router  
 - **Deployment:** Vercel  
-
----
