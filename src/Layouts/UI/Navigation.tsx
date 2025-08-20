@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Navigation({ items }: { items: string[] }) {
+function Navigation({ items }: { items: string[] }) {
 	const location = useLocation();
 
 	const underlineVariants = {
@@ -44,3 +45,5 @@ export default function Navigation({ items }: { items: string[] }) {
 		</>
 	);
 }
+
+export default React.memo(Navigation);
