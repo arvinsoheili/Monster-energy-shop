@@ -116,7 +116,7 @@ export default function ProductCards() {
 				</CardFooter>
 			</MotionCard>
 		));
-	});
+	}, []);
 
 	return (
 		<div className='flex flex-col gap-10 overflow-x-hidden my-20'>
