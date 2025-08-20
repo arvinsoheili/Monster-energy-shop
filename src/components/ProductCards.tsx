@@ -18,6 +18,7 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from "./ui/drawer";
+import { useMemo } from "react";
 export default function ProductCards() {
 	const gridContainerVariants = {
 		hidden: { opacity: 0 },
@@ -34,8 +35,8 @@ export default function ProductCards() {
 
 	const MotionButton = motion(Button);
 	const MotionCard = motion(Card);
-	const profileCards = Profiles.profiles.map((profile) => {
-		return (
+	const profileCards = useMemo(() => {
+		return Profiles.profiles.map((profile) => (
 			<MotionCard
 				variants={gridSquareVariants}
 				className='w-full mx-auto dark:shadow-lg dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-600'
@@ -114,7 +115,7 @@ export default function ProductCards() {
 					</Drawer>
 				</CardFooter>
 			</MotionCard>
-		);
+		));
 	});
 
 	return (
