@@ -1,5 +1,5 @@
 {
-    "profiles": [
+    "products": [
         {
             "id": 1,
             "name": "Zero Ultra",
@@ -97,7 +97,7 @@
             "image": "12.png"
         },
         {
-            "id": 8,
+            "id": 9,
             "name": "ultra blue",
             "volume": 500,
             "volUnit": "ml",
