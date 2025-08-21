@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 function Welcome() {
-	const MotionAvatar = motion(Avatar);
-	const MotionButton = motion(Button);
+	const MotionAvatar = motion.create(Avatar);
+	const MotionButton = motion.create(Button);
 
 	const gridContainerVariants = {
 		hidden: { opacity: 0, y: -500 },
@@ -26,7 +26,13 @@ function Welcome() {
 
 	return (
 		<>
-			<div className='font-monster bg-stone-950 min-h-screen w-full flex flex-col md:flex-row gap-4 md:gap-4 lg:gap-2 text-white justify-center items-center py-6 md:py-10'>
+			<motion.div
+				initial={{ opacity: 0, y: 100 }} // start below the screen
+				animate={{ opacity: 1, y: 0 }} // slide into place
+				exit={{ opacity: 0, y: -500 }} // slide up when exiting
+				transition={{ duration: 0.6, ease: "easeIn" }}
+				className='font-monster bg-stone-950 min-h-screen w-full flex flex-col md:flex-row gap-4 md:gap-4 lg:gap-2 text-white justify-center items-center py-6 md:py-10'
+			>
 				<motion.section
 					variants={gridContainerVariants}
 					initial='hidden'
@@ -85,7 +91,7 @@ function Welcome() {
 						{WelcomeData.button}
 					</MotionButton>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 }

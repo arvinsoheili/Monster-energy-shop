@@ -6,7 +6,7 @@ import {
 	CardHeader,
 } from "../components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import Profiles from "../data/Profiles.json";
+import Products from "../data/Products.json";
 import { Button } from "@/components/ui/button";
 import {
 	Drawer,
@@ -33,11 +33,12 @@ export default function ProductCards() {
 		show: { opacity: 1, y: 0 },
 	};
 
-	const MotionButton = motion(Button);
-	const MotionCard = motion(Card);
-	const profileCards = useMemo(() => {
-		return Profiles.profiles.map((profile) => (
+	const MotionButton = motion.create(Button);
+	const MotionCard = motion.create(Card);
+	const productCards = useMemo(() => {
+		return Products.products.map((product) => (
 			<MotionCard
+				key={product.id}
 				variants={gridSquareVariants}
 				className='w-full mx-auto dark:shadow-lg dark:shadow-neutral-900 dark:inset-shadow-2xs dark:inset-shadow-neutral-600'
 			>
@@ -45,22 +46,22 @@ export default function ProductCards() {
 					<Avatar className='w-full'>
 						<AvatarImage
 							className='rounded-xl w-full h-[15rem] xl:h-[20rem] object-contain p-5'
-							src={`images/products/${profile.image}`}
+							src={`images/products/${product.image}`}
 						/>
 						<AvatarFallback className='bg-stone-600 p-5 rounded-full'>
-							{profile.name.slice(0, 2)}
+							{product.name.slice(0, 2)}
 						</AvatarFallback>
 					</Avatar>
 				</CardHeader>
 				<CardContent className='gap-3 justify-center text-center h-full'>
 					<div className='gap-0.5'>
-						<h2 className='text-3xl max-xs:text-2xl xl:text-4xl font-medium break-words'>{`${profile.name}`}</h2>
-						<h4 className='text-stone-500 xl:text-xl'>{`${profile.volume}${profile.volUnit}`}</h4>
+						<h2 className='text-3xl max-xs:text-2xl xl:text-4xl font-medium break-words'>{`${product.name}`}</h2>
+						<h4 className='text-stone-500 xl:text-xl'>{`${product.volume}${product.volUnit}`}</h4>
 					</div>
 				</CardContent>
 				<div className='flex justify-start text-start my-3 items-start h-full px-5 xl:text-xl'>
 					<ul>
-						{profile.contains.map((skill) => {
+						{product.contains.map((skill) => {
 							return <li className='mx-0.5'>+ {skill}</li>;
 						})}
 					</ul>
@@ -82,23 +83,23 @@ export default function ProductCards() {
 						<DrawerContent className=''>
 							<div className='mx-auto w-full max-w-sm'>
 								<DrawerHeader>
-									<DrawerTitle className='text-2xl'>{profile.name}</DrawerTitle>
+									<DrawerTitle className='text-2xl'>{product.name}</DrawerTitle>
 									<DrawerDescription>
-										{profile.volume}
-										{profile.volUnit}
+										{product.volume}
+										{product.volUnit}
 									</DrawerDescription>
 								</DrawerHeader>
 								<div className='p-4 pb-0 grid grid-cols-2'>
 									<Avatar className='flex justify-center '>
 										<AvatarImage
-											src={`images/products/${profile.image}`}
+											src={`images/products/${product.image}`}
 											className='max-h-70 object-fit'
 										/>
-									<div className="border-r-2 px-2.5"/>
+										<div className='border-r-2 px-2.5' />
 									</Avatar>
 									<div className='flex justify-start text-start my-3 items-start h-full text-sm'>
 										<ul>
-											{profile.contains.map((skill) => {
+											{product.contains.map((skill) => {
 												return <li className='mx-0.5'>+ {skill}</li>;
 											})}
 										</ul>
@@ -126,7 +127,7 @@ export default function ProductCards() {
 				animate='show'
 				className='grid grid-cols-1 min-[580px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-15'
 			>
-				{profileCards}
+				{productCards}
 			</motion.section>
 		</div>
 	);
