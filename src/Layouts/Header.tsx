@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Navigation from "./UI/Navigation";
-import Sidebar from './Sidebar';
+import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
-
+import Cart from "./Cart";
 
 export default function Header() {
 	const menu = ["welcome", "products"];
@@ -19,7 +19,7 @@ export default function Header() {
 					</menu>
 				</div>
 
-				<Sidebar/>
+				<Sidebar />
 			</div>
 
 			{/* Logo */}
@@ -35,6 +35,10 @@ export default function Header() {
 				</Link>
 			</Avatar>
 
+			{/* Shopping Cart */}
+			<div className='flex justify-end'>
+				<Cart />
+			</div>
 		</header>
 	);
 }
