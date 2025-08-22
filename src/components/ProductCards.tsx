@@ -19,7 +19,23 @@ import {
 	DrawerTrigger,
 } from "./ui/drawer";
 import { useMemo } from "react";
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "@/app/store";
+import { addToCart } from "@/services/cartSlice";
+import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+
 export default function ProductCards() {
+	type Product = {
+		id: number;
+		name: string;
+		price: number;
+		image: string;
+	};
+
+	const dispatch = useDispatch<AppDispatch>();
+
 	const gridContainerVariants = {
 		hidden: { opacity: 0 },
 		show: {
@@ -35,6 +51,27 @@ export default function ProductCards() {
 
 	const MotionButton = motion.create(Button);
 	const MotionCard = motion.create(Card);
+
+	function add(p: Product) {
+		dispatch(addToCart(p));
+		const Toast = Swal.mixin({
+			toast: true,
+			position: "top-end",
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.onmouseenter = Swal.stopTimer;
+				toast.onmouseleave = Swal.resumeTimer;
+			},
+		});
+		Toast.fire({
+			icon: "success",
+			title: `${p.name} added to cart`,
+			theme: "dark",
+		});
+	}
+
 	const productCards = useMemo(() => {
 		return Products.products.map((product) => (
 			<MotionCard
@@ -56,25 +93,28 @@ export default function ProductCards() {
 				<CardContent className='gap-3 justify-center text-center h-full'>
 					<div className='gap-0.5'>
 						<h2 className='text-3xl max-xs:text-2xl xl:text-4xl font-medium break-words'>{`${product.name}`}</h2>
-						<h4 className='text-stone-500 xl:text-xl'>{`${product.volume}${product.volUnit}`}</h4>
+						{/* <h4 className='text-stone-500 xl:text-xl'></h4> */}
 					</div>
 				</CardContent>
-				<div className='flex justify-start text-start my-3 items-start h-full px-5 xl:text-xl'>
-					<ul>
-						{product.contains.map((skill) => {
-							return <li className='mx-0.5'>+ {skill}</li>;
-						})}
-					</ul>
+				<div className='flex flex-col justify-start text-neutral-400 text-start my-3 items-start h-full px-5 xl:text-xl'>
+					<div className='flex w-full justify-between'>
+						<p className='font-bold'>Vol:</p>
+						<p className=''>{`${product.volume}${product.volUnit}`}</p>
+					</div>
+					<div className='flex w-full justify-between'>
+						<p className='font-bold'>Price:</p>
+						<p>${product.price}</p>
+					</div>
 				</div>
-				<CardFooter className='flex flex-row gap-5 text-end justify-center items-end'>
-					<Drawer>
+				<CardFooter className='flex flex-row gap-1 md:gap-2 text-end justify-center items-end'>
+					<Drawer key={product.id}>
 						<DrawerTrigger asChild>
 							<MotionButton
 								whileHover={{
 									boxShadow: "0 0 10px 5px #a3e635",
 									backgroundColor: "#a3e635",
 								}}
-								className='w-full xl:text-xl py-6'
+								className='xl:text-xl md:py-6 flex-1'
 							>
 								Buy Now
 							</MotionButton>
@@ -97,16 +137,24 @@ export default function ProductCards() {
 										/>
 										<div className='border-r-2 px-2.5' />
 									</Avatar>
-									<div className='flex justify-start text-start my-3 items-start h-full text-sm'>
-										<ul>
+									<div className='flex flex-col justify-start text-start py-3 items-start h-full text-sm'>
+										<ul className='flex-1'>
 											{product.contains.map((skill) => {
 												return <li className='mx-0.5'>+ {skill}</li>;
 											})}
 										</ul>
+										<div className='flex justify-between w-full text-neutral-400'>
+											<p className='font-bold'>Price:</p>
+											<p>${product.price}</p>
+										</div>
 									</div>
 								</div>
-								<DrawerFooter>
-									<Button disabled>Add To Cart</Button>
+								<DrawerFooter className='flex flex-row gap-2'>
+									<DrawerClose className='flex-1'>
+										<Button className='w-full' onClick={() => add(product)}>
+											Add To Cart
+										</Button>
+									</DrawerClose>
 									<DrawerClose asChild>
 										<Button variant='outline'>Cancel</Button>
 									</DrawerClose>
@@ -114,6 +162,13 @@ export default function ProductCards() {
 							</div>
 						</DrawerContent>
 					</Drawer>
+					<Button
+						variant='outline'
+						className=' xl:text-xl md:py-6 '
+						onClick={() => add(product)}
+					>
+						<FontAwesomeIcon icon={faCartShopping} />
+					</Button>
 				</CardFooter>
 			</MotionCard>
 		));
