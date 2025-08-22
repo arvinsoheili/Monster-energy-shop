@@ -33,7 +33,7 @@ export default function Cart() {
 					</CardHeader>
 					<hr className='w-[95%] justify-center mx-auto' />
 					<CardContent className=' max-h-94 inset-shadow-sm/20 inset-shadow-neutral-950 | md:flex md:flex-row'>
-						<div className='max-h-94 overflow-y-auto md:pe-2.5 md:flex-2'>
+						<div className='max-h-94 overflow-y-auto md:pe-2.5 md:flex-2 scrollbar-hide'>
 							<ul className='list-none p-0 pt-4 m-0'>
 								{Products.products.map((it) => (
 									<li className='flex items-center gap-4 mb-3'>
