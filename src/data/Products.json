@@ -1,0 +1,85 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Zero Ultra",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["zero sugar", "taurin", "L-carnetine"],
+      "image": "1.png",
+      "price": 2.99
+    },
+    {
+      "id": 2,
+      "name": "Ultra Vice Guava",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["taurin", "zero sugar", "L-carnetine", "sweet"],
+      "image": "2.png",
+      "price": 3.29
+    },
+    {
+      "id": 3,
+      "name": "Ruby Red",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["zero sugar", "Pink", "L-carnetine", "caffeine"],
+      "image": "3.png",
+      "price": 3.19
+    },
+    {
+      "id": 4,
+      "name": "Peachy Keen",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["Peach flavoured", "zero sugar", "L-carnetine"],
+      "image": "4.png",
+      "price": 2.79
+    },
+    {
+      "id": 5,
+      "name": "Strawberry Dreams",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["Strawberry Taste", "zero sugar", "L-carnetine"],
+      "image": "5.png",
+      "price": 2.89
+    },
+    {
+      "id": 6,
+      "name": "Watermelon",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["Watermelon Taste", "zero sugar", "L-carnetine"],
+      "image": "6.png",
+      "price": 3.09
+    },
+    {
+      "id": 7,
+      "name": "Ultra Gold",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["shiny", "golden", "zero sugar", "L-carnetine"],
+      "image": "7.png",
+      "price": 3.49
+    },
+    {
+      "id": 8,
+      "name": "Ultra Black",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["Black", "zero sugar", "caffeine", "L-carnetine"],
+      "image": "12.png",
+      "price": 2.99
+    },
+    {
+      "id": 9,
+      "name": "Ultra Blue",
+      "volume": 500,
+      "volUnit": "ml",
+      "contains": ["blueberry taste", "zero sugar", "caffeine", "L-carnetine"],
+      "image": "11.png",
+      "price": 3.19
+    }
+  ]
+}

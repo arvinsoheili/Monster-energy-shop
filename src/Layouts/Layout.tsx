@@ -10,11 +10,13 @@ export default function Layout() {
 
 	return (
 		<>
-			{!shouldHideLayout && <Header />}
-			<main className={`${!shouldHideLayout && `md:mt-30`}`}>
-				<Outlet />
-			</main>
-			{!shouldHideLayout && <Footer copywrite="Developed By Develook"/>}
+			<div className='flex flex-col min-h-screen'>
+				{!shouldHideLayout && <Header />}
+				<main>
+					<Outlet />
+				</main>
+				{!shouldHideLayout && <Footer copywrite='Developed By Develook' />}
+			</div>
 		</>
 	);
 }
