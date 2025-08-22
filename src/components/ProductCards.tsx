@@ -120,7 +120,7 @@ export default function ProductCards() {
 	}, []);
 
 	return (
-		<div className='flex flex-col gap-10 overflow-x-hidden my-20'>
+		<div className='flex flex-col gap-10 overflow-x-hidden my-20 md:mt-30'>
 			<motion.section
 				variants={gridContainerVariants}
 				initial='hidden'
