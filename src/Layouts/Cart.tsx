@@ -4,10 +4,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faXmark } from "@fortawesome/free-solid-svg-icons";
-import {
-	DropdownMenuContent,
-	DropdownMenuLabel,
-} from "@radix-ui/react-dropdown-menu";
+import { DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import {
 	Card,
 	CardContent,
@@ -17,8 +14,9 @@ import {
 } from "@/components/ui/card";
 import Products from "../data/Products.json";
 import { Avatar } from "@/components/ui/avatar";
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
 	return (
@@ -28,9 +26,13 @@ export default function Cart() {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className='px-2 md:w-md lg:w-xl' align='end'>
 				<Card>
-					<CardHeader className='-mb-4'>
-						<CardTitle className='p-0 m-0'>Cart</CardTitle>
+					<CardHeader className='flex flex-row items-center justify-between w-full -mb-4'>
+						<CardTitle className='m-0 p-0 w-auto'>Cart</CardTitle>
+						<Link to='/cart' className='text-sm text-blue-500 hover:underline'>
+							Go To Cart
+						</Link>
 					</CardHeader>
+
 					<hr className='w-[95%] justify-center mx-auto' />
 					<CardContent className=' max-h-94 inset-shadow-sm/20 inset-shadow-neutral-950 | md:flex md:flex-row'>
 						<div className='max-h-94 overflow-y-auto md:pe-2.5 md:flex-2 scrollbar-hide'>

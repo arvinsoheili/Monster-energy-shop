@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Layout from "./Layouts/Layout";
 import { lazy } from "react";
+import Cart from "./components/Cart";
 
 const ProductCards = lazy(() => import("./components/ProductCards"));
 const Welcome = lazy(() => import("./components/Welcome"));
@@ -18,6 +19,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Navigate to="/welcome" replace />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/products" element={<ProductCards />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </AnimatePresence>
